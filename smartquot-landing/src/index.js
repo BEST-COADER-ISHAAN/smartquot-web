@@ -14,10 +14,10 @@ root.render(
       Set 'app.smartquot.net' as an allowed callback and logout URL in your Auth0 dashboard.
     */}
     <Auth0Provider
-      domain="dev-bz1pulscak2fu72z.us.auth0.com"
-      clientId="uXh9MPPJbT5GuEm2aKBIXa5iVN0uUo71"
+      domain={process.env.REACT_APP_AUTH0_DOMAIN || "dev-bz1pulscak2fu72z.us.auth0.com"}
+      clientId={process.env.REACT_APP_AUTH0_CLIENT_ID || "uXh9MPPJbT5GuEm2aKBIXa5iVN0uUo71"}
       authorizationParams={{
-        redirect_uri: window.location.origin
+        redirect_uri: process.env.REACT_APP_AUTH0_CALLBACK_URL || "https://smartquot.net/callback"
       }}
       cacheLocation="localstorage"
     >
