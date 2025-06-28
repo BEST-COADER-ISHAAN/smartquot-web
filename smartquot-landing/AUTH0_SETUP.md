@@ -12,7 +12,8 @@
 ### Allowed Callback URLs:
 ```
 https://smartquot.net/callback
-https://app.smartquot.net/callback
+https://smartquot.net
+https://app.smartquot.net
 http://localhost:3000/callback
 ```
 
@@ -48,9 +49,16 @@ REACT_APP_APP_URL=https://app.smartquot.net
 REACT_APP_LANDING_URL=https://smartquot.net
 ```
 
-## 5. Update Auth0Provider
+## 5. User Flow
 
-Make sure your Auth0Provider in `App.js` uses these environment variables:
+1. **User visits** `https://smartquot.net` (landing page)
+2. **Clicks "Login"** → Goes to Auth0
+3. **Logs in successfully** → Redirected back to `https://smartquot.net`
+4. **Button changes to "Go to Dashboard"** → Clicking it takes them to `https://app.smartquot.net`
+
+## 6. Update Auth0Provider
+
+Make sure your Auth0Provider in `index.js` uses these environment variables:
 
 ```jsx
 <Auth0Provider
@@ -64,15 +72,16 @@ Make sure your Auth0Provider in `App.js` uses these environment variables:
 </Auth0Provider>
 ```
 
-## 6. Vercel Environment Variables
+## 7. Vercel Environment Variables
 
 Add these environment variables in your Vercel dashboard:
 1. Go to your project settings
 2. Click **"Environment Variables"**
 3. Add each variable from step 4
 
-## 7. Test the Setup
+## 8. Test the Setup
 
 1. Deploy your app
 2. Test login/logout functionality
-3. Verify redirects work correctly 
+3. Verify users stay on landing page after login
+4. Verify "Go to Dashboard" button redirects to app.smartquot.net 

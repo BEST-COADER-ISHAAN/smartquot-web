@@ -22,8 +22,8 @@ function AppContent() {
   // Handler for login button
   const handleLogin = () => {
     if (isAuthenticated) {
-      // If already authenticated, redirect to dashboard or main app area
-      window.location.href = '/dashboard';
+      // If already authenticated, redirect to app.smartquot.net
+      window.location.href = 'https://app.smartquot.net';
     } else {
       // If not authenticated, start login process
       loginWithRedirect({
@@ -351,8 +351,8 @@ function Callback() {
   }
 
   if (isAuthenticated) {
-    // Redirect to dashboard after successful authentication
-    window.location.href = '/dashboard';
+    // Redirect back to landing page after successful authentication
+    window.location.href = '/';
     return null;
   }
 
