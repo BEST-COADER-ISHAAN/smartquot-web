@@ -1,9 +1,8 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "build",
-  "installCommand": "npm install",
+  "buildCommand": "cd smartquot-landing && npm run build",
+  "outputDirectory": "smartquot-landing/build",
+  "installCommand": "cd smartquot-landing && npm install",
   "framework": "create-react-app",
-  "rootDirectory": "smartquot-landing",
   "rewrites": [
     {
       "source": "/(.*)",
