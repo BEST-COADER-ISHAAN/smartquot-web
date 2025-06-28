@@ -22,12 +22,12 @@ function AppContent() {
   // Handler for login button
   const handleLogin = () => {
     if (isAuthenticated) {
-      // If already authenticated, redirect to app
-      window.location.href = 'https://app.smartquot.net';
+      // If already authenticated, redirect to dashboard or main app area
+      window.location.href = '/dashboard';
     } else {
       // If not authenticated, start login process
       loginWithRedirect({
-        redirectUri: 'https://app.smartquot.net',
+        redirectUri: 'https://smartquot.net/callback',
       });
     }
   };
@@ -86,7 +86,7 @@ function AppContent() {
                   View Pricing <span className="arrow">→</span>
                 </button>
                 <button className="login-btn" onClick={handleLogin} disabled={isLoading}>
-                  {isAuthenticated ? 'Go to App' : 'Login'}
+                  {isAuthenticated ? 'Go to Dashboard' : 'Login'}
                 </button>
               </div>
               <div className="features-row">
@@ -351,8 +351,8 @@ function Callback() {
   }
 
   if (isAuthenticated) {
-    // Redirect to app after successful authentication
-    window.location.href = 'https://app.smartquot.net';
+    // Redirect to dashboard after successful authentication
+    window.location.href = '/dashboard';
     return null;
   }
 
