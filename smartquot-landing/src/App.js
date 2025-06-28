@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import './App.css';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
 import FeaturesPage from './pages/FeaturesPage';
 import PricingPage from './pages/PricingPage';
 import TemplatesPage from './pages/TemplatesPage';
@@ -16,14 +16,20 @@ import TermsPage from './pages/TermsPage';
 import CookiePolicyPage from './pages/CookiePolicyPage';
 
 function AppContent() {
-  const { loginWithRedirect, isAuthenticated, isLoading } = useAuth0();
+  const { loginWithRedirect, isAuthenticated, isLoading, user } = useAuth0();
   const [navOpen, setNavOpen] = useState(false);
 
   // Handler for login button
   const handleLogin = () => {
-    loginWithRedirect({
-      redirectUri: 'https://app.smartquot.net', // After login, redirect to your app
-    });
+    if (isAuthenticated) {
+      // If already authenticated, redirect to app
+      window.location.href = 'https://app.smartquot.net';
+    } else {
+      // If not authenticated, start login process
+      loginWithRedirect({
+        redirectUri: 'https://app.smartquot.net',
+      });
+    }
   };
 
   // Close nav on link click (mobile)
@@ -336,10 +342,28 @@ function AppContent() {
   );
 }
 
+// Callback component for Auth0
+function Callback() {
+  const { isAuthenticated, isLoading } = useAuth0();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isAuthenticated) {
+    // Redirect to app after successful authentication
+    window.location.href = 'https://app.smartquot.net';
+    return null;
+  }
+
+  return <Navigate to="/" />;
+}
+
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/callback" element={<Callback />} />
         <Route path="/features" element={<FeaturesPage />} />
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/templates" element={<TemplatesPage />} />
