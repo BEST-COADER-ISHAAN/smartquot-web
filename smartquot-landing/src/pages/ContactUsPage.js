@@ -51,6 +51,21 @@ export default function ContactUsPage() {
                 </div>
               </div>
             </div>
+
+            <div className="contact-section">
+              <h2>Company Address</h2>
+              <div className="contact-methods">
+                <div className="contact-method">
+                  <h3>Shree Krishna Traders</h3>
+                  <p>Kotra, Ajmer-305001</p>
+                  <p>Rajasthan, India</p>
+                  <div className="gst-info">
+                    <h4>GST Number:</h4>
+                    <p>08AJZPM3311L1ZO</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         

@@ -2140,3 +2140,28 @@ body, .landing-root {
   width: 100%;
   margin-top: 8px;
 }
+
+/* GST Information Styling */
+.gst-info {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.gst-info h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.gst-info p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #181c2a;
+  font-family: 'Courier New', monospace;
+  background: #f3f4f6;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
